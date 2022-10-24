@@ -1,6 +1,6 @@
-import './App.css';
+import React from 'react';
 
-function App() {
+function Profile() {
   return (
     <>
       <title>HRnet</title>
@@ -48,4 +48,4 @@ function App() {
   );
 }
 
-export default App;
+export default Profile;
