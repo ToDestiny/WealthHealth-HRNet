@@ -41,9 +41,6 @@ function Profile() {
         </form>
         <button onclick="saveEmployee()">Save</button>
       </div>
-      <div id="confirmation" className="modal">
-        Employee Created!
-      </div>
     </>
   );
 }
