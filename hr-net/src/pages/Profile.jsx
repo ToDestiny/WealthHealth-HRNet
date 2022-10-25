@@ -34,9 +34,12 @@ function Profile() {
 
   useEffect(() => {
     if (isSubmit) {
+      setSubmit(false);
       console.log(formValue);
       console.log(dateOfBirth);
       console.log(startDate);
+      console.log(selectedStateOption);
+      console.log(selectedDepartmentOption);
       alert('You succesfully registered!');
     }
     //eslint-disable-next-line
