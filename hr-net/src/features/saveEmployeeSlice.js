@@ -1,7 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  token: null,
+  firstName: '',
+  lastName: '',
+  dateOfBirth: '',
+  startDate: '',
+  street: '',
+  city: '',
+  state: '',
+  zip: '',
+  department: '',
 };
 
 export const saveEmployeeSlice = createSlice({

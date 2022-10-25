@@ -1,6 +1,47 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
+import DatePicker from 'react-date-picker';
+import Select from 'react-select';
+import { options } from '../assets/departments';
+import { states } from '../assets/states';
+
+const initialState = {
+  firstName: '',
+  lastName: '',
+  street: '',
+  city: '',
+  zip: '',
+};
 
 function Profile() {
+  const [formValue, setFormValue] = useState(initialState);
+  const [isSubmit, setSubmit] = useState(false);
+  const [dateOfBirth, setDateOfBirth] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
+  const [selectedStateOption, setSelectedStateOption] = useState(null);
+  const [selectedDepartmentOption, setSelectedDepartmentOption] =
+    useState(null);
+
+  const { firstName, lastName, street, city, zip } = formValue;
+
+  const handleChange = (e) => {
+    setFormValue({ ...formValue, [e.target.name]: e.target.value });
+  };
+
+  function handleSubmit() {
+    setSubmit(true);
+  }
+
+  useEffect(() => {
+    if (isSubmit) {
+      console.log(formValue);
+      console.log(dateOfBirth);
+      console.log(startDate);
+      alert('You succesfully registered!');
+    }
+    //eslint-disable-next-line
+  }, [isSubmit]);
+
   return (
     <>
       <title>HRnet</title>
@@ -12,34 +53,68 @@ function Profile() {
         <h2>Create Employee</h2>
         <form action="#" id="create-employee">
           <label htmlFor="first-name">First Name</label>
-          <input type="text" id="first-name" />
+          <input
+            type="text"
+            id="firstName"
+            value={firstName}
+            name="firstName"
+            onChange={handleChange}
+          />
           <label htmlFor="last-name">Last Name</label>
-          <input type="text" id="last-name" />
+          <input
+            type="text"
+            id="lastName"
+            value={lastName}
+            name="lastName"
+            onChange={handleChange}
+          />
           <label htmlFor="date-of-birth">Date of Birth</label>
-          <input id="date-of-birth" type="text" />
+          <DatePicker onChange={setDateOfBirth} value={dateOfBirth} />
           <label htmlFor="start-date">Start Date</label>
-          <input id="start-date" type="text" />
+          <DatePicker onChange={setStartDate} value={startDate} />
           <fieldset className="address">
             <legend>Address</legend>
             <label htmlFor="street">Street</label>
-            <input id="street" type="text" />
+            <input
+              type="text"
+              id="street"
+              value={street}
+              name="street"
+              onChange={handleChange}
+            />
             <label htmlFor="city">City</label>
-            <input id="city" type="text" />
+            <input
+              type="text"
+              id="city"
+              value={city}
+              name="city"
+              onChange={handleChange}
+            />
             <label htmlFor="state">State</label>
-            <select name="state" id="state" />
+            <Select
+              defaultValue={selectedStateOption}
+              onChange={setSelectedStateOption}
+              options={states}
+              placeholder="Select an option"
+            />
             <label htmlFor="zip-code">Zip Code</label>
-            <input id="zip-code" type="number" />
+            <input
+              name="zip"
+              id="zip"
+              value={zip}
+              type="number"
+              onChange={handleChange}
+            />
           </fieldset>
           <label htmlFor="department">Department</label>
-          <select name="department" id="department">
-            <option>Sales</option>
-            <option>Marketing</option>
-            <option>Engineering</option>
-            <option>Human Resources</option>
-            <option>Legal</option>
-          </select>
+          <Select
+            defaultValue={selectedDepartmentOption}
+            onChange={setSelectedDepartmentOption}
+            options={options}
+            placeholder="Select an option"
+          />
         </form>
-        <button onclick="saveEmployee()">Save</button>
+        <button onClick={handleSubmit}>Save</button>
       </div>
     </>
   );
