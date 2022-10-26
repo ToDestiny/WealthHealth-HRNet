@@ -4,6 +4,12 @@ import DatePicker from 'react-date-picker';
 import Select from 'react-select';
 import { options } from '../assets/departments';
 import { states } from '../assets/states';
+import Modal from '../components/Modal';
+import styled from 'styled-components';
+
+const Overlay = styled.div`
+  z-index: -1;
+`;
 
 const initialState = {
   firstName: '',
@@ -21,6 +27,7 @@ function Profile() {
   const [selectedStateOption, setSelectedStateOption] = useState(null);
   const [selectedDepartmentOption, setSelectedDepartmentOption] =
     useState(null);
+  const [openModal, setOpenModal] = useState(false);
 
   const { firstName, lastName, street, city, zip } = formValue;
 
@@ -29,6 +36,7 @@ function Profile() {
   };
 
   function handleSubmit() {
+    setOpenModal(true);
     setSubmit(true);
   }
 
@@ -40,13 +48,13 @@ function Profile() {
       console.log(startDate);
       console.log(selectedStateOption);
       console.log(selectedDepartmentOption);
-      alert('You succesfully registered!');
+      setOpenModal(true);
     }
     //eslint-disable-next-line
   }, [isSubmit]);
 
   return (
-    <>
+    <Overlay>
       <title>HRnet</title>
       <div className="title">
         <h1>HRnet</h1>
@@ -118,8 +126,10 @@ function Profile() {
           />
         </form>
         <button onClick={handleSubmit}>Save</button>
+
+        <Modal open={openModal} onClose={() => setOpenModal(false)} />
       </div>
-    </>
+    </Overlay>
   );
 }
 
