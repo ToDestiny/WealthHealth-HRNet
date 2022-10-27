@@ -19,6 +19,10 @@ const initialState = {
   zip: '',
 };
 
+const Button = styled.button`
+  margin-top: 1rem;
+`;
+
 function Profile() {
   const [formValue, setFormValue] = useState(initialState);
   const [isSubmit, setSubmit] = useState(false);
@@ -125,7 +129,7 @@ function Profile() {
             placeholder="Select an option"
           />
         </form>
-        <button onClick={handleSubmit}>Save</button>
+        <Button onClick={handleSubmit}>Save</Button>
 
         <Modal open={openModal} onClose={() => setOpenModal(false)} />
       </div>

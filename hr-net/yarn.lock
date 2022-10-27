@@ -7609,6 +7609,13 @@ react-calendar@^3.7.0:
     merge-class-names "^1.1.1"
     prop-types "^15.6.0"
 
+react-data-table-component@^7.5.3:
+  version "7.5.3"
+  resolved "https://registry.yarnpkg.com/react-data-table-component/-/react-data-table-component-7.5.3.tgz#a008b4c281574cc1a81315e2c1b34107b5d18fe0"
+  integrity sha512-JhatRTgThAAa1HobPaPmkNPsjLT6+fnMIdtcXRCy+0bSYN7XJnTgob9Qyi4bjHh/8tMPTHtxZCV/TKiPwRvFMA==
+  dependencies:
+    deepmerge "^4.2.2"
+
 react-date-picker@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/react-date-picker/-/react-date-picker-9.0.0.tgz#12595d7fb0106ce9bd58e324ababd8c14f0fab1b"
