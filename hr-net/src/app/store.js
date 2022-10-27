@@ -6,8 +6,6 @@ export const store = configureStore({
   reducer: {
     save: saveReducer,
   },
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(saveReducer.middleware),
 });
 
 setupListeners(store.dispatch);
