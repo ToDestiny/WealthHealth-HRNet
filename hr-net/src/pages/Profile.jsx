@@ -2,10 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import DatePicker from 'react-date-picker';
 import Select from 'react-select';
+import { useDispatch } from 'react-redux';
 import { options } from '../assets/departments';
 import { states } from '../assets/states';
 import Modal from '../components/Modal';
 import styled from 'styled-components';
+import { saveFormValue } from '../features/saveEmployeeSlice';
 
 const Overlay = styled.div`
   z-index: -1;
@@ -14,9 +16,13 @@ const Overlay = styled.div`
 const initialState = {
   firstName: '',
   lastName: '',
+  dateOfBirthForm: '',
+  startDateForm: '',
   street: '',
   city: '',
   zip: '',
+  state: [],
+  department: [],
 };
 
 const Button = styled.button`
@@ -32,6 +38,7 @@ function Profile() {
   const [selectedDepartmentOption, setSelectedDepartmentOption] =
     useState(null);
   const [openModal, setOpenModal] = useState(false);
+  const dispatch = useDispatch();
 
   const { firstName, lastName, street, city, zip } = formValue;
 
@@ -47,11 +54,22 @@ function Profile() {
   useEffect(() => {
     if (isSubmit) {
       setSubmit(false);
+      formValue.dateOfBirthForm =
+        dateOfBirth.getDate() +
+        '/' +
+        dateOfBirth.getMonth() +
+        '/' +
+        dateOfBirth.getFullYear();
+      formValue.startDateForm =
+        startDate.getDate() +
+        '/' +
+        startDate.getMonth() +
+        '/' +
+        startDate.getFullYear();
+      formValue.state = selectedStateOption;
+      formValue.department = selectedDepartmentOption;
       console.log(formValue);
-      console.log(dateOfBirth);
-      console.log(startDate);
-      console.log(selectedStateOption);
-      console.log(selectedDepartmentOption);
+      dispatch(saveFormValue(formValue));
       setOpenModal(true);
     }
     //eslint-disable-next-line

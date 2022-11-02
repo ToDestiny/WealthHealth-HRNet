@@ -7,21 +7,30 @@ const initialState = {
   startDate: '',
   street: '',
   city: '',
-  state: '',
+  state: [],
   zip: '',
-  department: '',
+  department: [],
 };
 
 export const saveEmployeeSlice = createSlice({
   name: 'save',
   initialState,
   reducers: {
-    setSaveUser: (state, action) => {
-      state.token = action.payload.token;
+    saveFormValue: (state, action) => {
+      console.log(action.payload);
+      state.firstName = action.payload.firstName;
+      state.lastName = action.payload.lastName;
+      state.dateOfBirth = action.payload.dateOfBirthForm;
+      state.startDate = action.payload.startDateForm;
+      state.street = action.payload.street;
+      state.city = action.payload.city;
+      state.zip = action.payload.zip;
+      state.state = action.payload.state;
+      state.department = action.payload.department;
     },
   },
 });
 
-export const { setSaveUser } = saveEmployeeSlice.actions;
+export const { saveFormValue } = saveEmployeeSlice.actions;
 
 export default saveEmployeeSlice.reducer;
