@@ -1,7 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 import { columns } from '../data/columns';
-// import { store } from '../app/store';
+import { store } from '../app/store';
+
+const state = store.getState();
+console.log(state);
 
 const data = [
   {
@@ -93,7 +97,7 @@ function EmployeeList() {
       <div id="employee-div" className="container">
         <h1>Current Employees</h1>
         <table id="employee-table" className="display" />
-        <a href="/profile">Home</a>
+        <Link to="/profile">Home</Link>
 
         <DataTable columns={columns} data={data} pagination />
       </div>

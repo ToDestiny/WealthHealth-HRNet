@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import DatePicker from 'react-date-picker';
 import Select from 'react-select';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { options } from '../assets/departments';
 import { states } from '../assets/states';
 import Modal from '../components/Modal';
@@ -32,7 +33,7 @@ const Button = styled.button`
 function Profile() {
   const [formValue, setFormValue] = useState(initialState);
   const [isSubmit, setSubmit] = useState(false);
-  const [dateOfBirth, setDateOfBirth] = useState(new Date());
+  let [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
   const [selectedStateOption, setSelectedStateOption] = useState(null);
   const [selectedDepartmentOption, setSelectedDepartmentOption] =
@@ -81,7 +82,7 @@ function Profile() {
         <h1>HRnet</h1>
       </div>
       <div className="container">
-        <a href="/employee-list">View Current Employees</a>
+        <Link to="/employee-list">View Current Employees</Link>
         <h2>Create Employee</h2>
         <form action="#" id="create-employee">
           <label htmlFor="first-name">First Name</label>
