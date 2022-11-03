@@ -68,7 +68,6 @@ function Profile() {
         startDate.getFullYear();
       formValue.state = selectedStateOption;
       formValue.department = selectedDepartmentOption;
-      console.log(formValue);
       dispatch(saveFormValue(formValue));
       setOpenModal(true);
     }
