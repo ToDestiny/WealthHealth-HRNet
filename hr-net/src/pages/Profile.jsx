@@ -14,7 +14,7 @@ const Overlay = styled.div`
   z-index: -1;
 `;
 
-const initialState = {
+let initialState = {
   firstName: '',
   lastName: '',
   dateOfBirthForm: '',
@@ -33,7 +33,7 @@ const Button = styled.button`
 function Profile() {
   const [formValue, setFormValue] = useState(initialState);
   const [isSubmit, setSubmit] = useState(false);
-  let [dateOfBirth, setDateOfBirth] = useState(new Date());
+  const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
   const [selectedStateOption, setSelectedStateOption] = useState(null);
   const [selectedDepartmentOption, setSelectedDepartmentOption] =
@@ -55,20 +55,26 @@ function Profile() {
   useEffect(() => {
     if (isSubmit) {
       setSubmit(false);
-      formValue.dateOfBirthForm =
+      const calculatedDate =
         dateOfBirth.getDate() +
         '/' +
         dateOfBirth.getMonth() +
+        1 +
         '/' +
         dateOfBirth.getFullYear();
-      formValue.startDateForm =
+      const calculatedStartDate =
         startDate.getDate() +
         '/' +
         startDate.getMonth() +
         '/' +
         startDate.getFullYear();
-      formValue.state = selectedStateOption;
-      formValue.department = selectedDepartmentOption;
+      setFormValue({
+        ...formValue,
+        dateOfBirthForm: calculatedDate,
+        startDateForm: calculatedStartDate,
+        state: selectedStateOption,
+        department: selectedDepartmentOption,
+      });
       dispatch(saveFormValue(formValue));
       setOpenModal(true);
     }
