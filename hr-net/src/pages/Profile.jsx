@@ -22,8 +22,8 @@ let initialState = {
   street: '',
   city: '',
   zip: '',
-  state: [],
-  department: [],
+  states: '',
+  department: '',
 };
 
 const Button = styled.button`
@@ -35,9 +35,8 @@ function Profile() {
   const [isSubmit, setSubmit] = useState(false);
   const [dateOfBirth, setDateOfBirth] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
-  const [selectedStateOption, setSelectedStateOption] = useState(null);
-  const [selectedDepartmentOption, setSelectedDepartmentOption] =
-    useState(null);
+  const [selectedStateOption, setSelectedStateOption] = useState();
+  const [selectedDepartmentOption, setSelectedDepartmentOption] = useState();
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -47,34 +46,47 @@ function Profile() {
     setFormValue({ ...formValue, [e.target.name]: e.target.value });
   };
 
+  const handleDateOfBirth = (e) => {
+    const calculatedDate =
+      e.getDate() + '/' + (e.getMonth() + 1) + '/' + e.getFullYear();
+    setDateOfBirth(e);
+    setFormValue({ ...formValue, dateOfBirthForm: calculatedDate });
+  };
+
+  const handleStartDate = (e) => {
+    const calculatedDate =
+      e.getDate() + '/' + (e.getMonth() + 1) + '/' + e.getFullYear();
+    setStartDate(e);
+    setFormValue({ ...formValue, startDateForm: calculatedDate });
+  };
+
+  const handleState = (e) => {
+    setSelectedStateOption(e);
+    setFormValue({ ...formValue, states: e.abbreviation });
+  };
+
+  const handleDepartment = (e) => {
+    setSelectedDepartmentOption(e);
+    setFormValue({ ...formValue, department: e.label });
+  };
+
   function handleSubmit() {
-    setOpenModal(true);
-    setSubmit(true);
+    if (firstName && lastName) {
+      setOpenModal(true);
+      setSubmit(true);
+    } else {
+      console.log(formValue);
+      alert('Please fill in the form.');
+    }
   }
 
   useEffect(() => {
+    setFormValue({
+      ...formValue,
+    });
     if (isSubmit) {
       setSubmit(false);
-      const calculatedDate =
-        dateOfBirth.getDate() +
-        '/' +
-        dateOfBirth.getMonth() +
-        1 +
-        '/' +
-        dateOfBirth.getFullYear();
-      const calculatedStartDate =
-        startDate.getDate() +
-        '/' +
-        startDate.getMonth() +
-        '/' +
-        startDate.getFullYear();
-      setFormValue({
-        ...formValue,
-        dateOfBirthForm: calculatedDate,
-        startDateForm: calculatedStartDate,
-        state: selectedStateOption,
-        department: selectedDepartmentOption,
-      });
+
       dispatch(saveFormValue(formValue));
       setOpenModal(true);
     }
@@ -91,7 +103,7 @@ function Profile() {
         <Link to="/employee-list">View Current Employees</Link>
         <h2>Create Employee</h2>
         <form action="#" id="create-employee">
-          <label htmlFor="first-name">First Name</label>
+          <label>First Name</label>
           <input
             type="text"
             id="firstName"
@@ -99,7 +111,7 @@ function Profile() {
             name="firstName"
             onChange={handleChange}
           />
-          <label htmlFor="last-name">Last Name</label>
+          <label>Last Name</label>
           <input
             type="text"
             id="lastName"
@@ -107,13 +119,13 @@ function Profile() {
             name="lastName"
             onChange={handleChange}
           />
-          <label htmlFor="date-of-birth">Date of Birth</label>
-          <DatePicker onChange={setDateOfBirth} value={dateOfBirth} />
-          <label htmlFor="start-date">Start Date</label>
-          <DatePicker onChange={setStartDate} value={startDate} />
+          <label>Date of Birth</label>
+          <DatePicker onChange={handleDateOfBirth} value={dateOfBirth} />
+          <label>Start Date</label>
+          <DatePicker onChange={handleStartDate} value={startDate} />
           <fieldset className="address">
             <legend>Address</legend>
-            <label htmlFor="street">Street</label>
+            <label>Street</label>
             <input
               type="text"
               id="street"
@@ -121,7 +133,7 @@ function Profile() {
               name="street"
               onChange={handleChange}
             />
-            <label htmlFor="city">City</label>
+            <label>City</label>
             <input
               type="text"
               id="city"
@@ -129,14 +141,14 @@ function Profile() {
               name="city"
               onChange={handleChange}
             />
-            <label htmlFor="state">State</label>
+            <label>State</label>
             <Select
               defaultValue={selectedStateOption}
-              onChange={setSelectedStateOption}
+              onChange={handleState}
               options={states}
               placeholder="Select an option"
             />
-            <label htmlFor="zip-code">Zip Code</label>
+            <label>Zip Code</label>
             <input
               name="zip"
               id="zip"
@@ -145,10 +157,10 @@ function Profile() {
               onChange={handleChange}
             />
           </fieldset>
-          <label htmlFor="department">Department</label>
+          <label>Department</label>
           <Select
             defaultValue={selectedDepartmentOption}
-            onChange={setSelectedDepartmentOption}
+            onChange={handleDepartment}
             options={options}
             placeholder="Select an option"
           />

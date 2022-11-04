@@ -2,95 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 import { columns } from '../data/columns';
-import { store } from '../app/store';
-
-const state = store.getState();
-console.log(state);
-
-const data = [
-  {
-    id: 1,
-    firstName: 'Beetlejuice',
-    lastName: 'Blabla',
-  },
-  {
-    id: 2,
-    firstName: 'Ghostbusters',
-    lastName: '1984',
-  },
-  {
-    id: 3,
-    firstName: 'Beetlejuice',
-    lastName: 'Blabla',
-  },
-  {
-    id: 4,
-    firstName: 'Ghostbusters',
-    lastName: '1984',
-  },
-  {
-    id: 5,
-    firstName: 'Beetlejuice',
-    lastName: 'Blabla',
-  },
-  {
-    id: 6,
-    firstName: 'Ghostbusters',
-    lastName: '1984',
-  },
-  {
-    id: 7,
-    firstName: 'Beetlejuice',
-    lastName: 'Blabla',
-  },
-  {
-    id: 8,
-    firstName: 'Ghostbusters',
-    lastName: '1984',
-  },
-  {
-    id: 9,
-    firstName: 'Beetlejuice',
-    lastName: 'Blabla',
-  },
-  {
-    id: 10,
-    firstName: 'Ghostbusters',
-    lastName: '1984',
-  },
-  {
-    id: 11,
-    firstName: 'Beetlejuice',
-    lastName: 'Blabla',
-  },
-  {
-    id: 12,
-    firstName: 'Ghostbusters',
-    lastName: '1984',
-  },
-  {
-    id: 13,
-    firstName: 'Beetlejuice',
-    lastName: 'Blabla',
-  },
-  {
-    id: 14,
-    firstName: 'Ghostbusters',
-    lastName: '1984',
-  },
-  {
-    id: 15,
-    firstName: 'Beetlejuice',
-    lastName: 'Blabla',
-  },
-  {
-    id: 16,
-    firstName: 'Ghostbusters',
-    lastName: '1984',
-  },
-];
+import { useSelector } from 'react-redux';
 
 function EmployeeList() {
+  const data = useSelector((state) => state.save);
   return (
     <>
       <title>HRnet - Current Employees</title>

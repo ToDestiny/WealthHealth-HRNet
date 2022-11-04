@@ -11,7 +11,7 @@ export const columns = [
   },
   {
     name: 'Start Date',
-    selector: (row) => row.startDate,
+    selector: (row) => row.startDateForm,
     sortable: true,
   },
   {
@@ -21,7 +21,7 @@ export const columns = [
   },
   {
     name: 'Date of Birth',
-    selector: (row) => row.dateOfBirth,
+    selector: (row) => row.dateOfBirthForm,
     sortable: true,
   },
   {
@@ -36,7 +36,7 @@ export const columns = [
   },
   {
     name: 'State',
-    selector: (row) => row.state,
+    selector: (row) => row.states,
     sortable: true,
   },
   {
