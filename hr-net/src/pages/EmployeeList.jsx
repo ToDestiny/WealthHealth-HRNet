@@ -5,6 +5,7 @@ import { columns } from '../data/columns';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 const SearchBar = styled.input`
   position: fixed;
@@ -20,54 +21,31 @@ const Container = styled.div`
 
 function EmployeeList() {
   const [searchTerm, setSearchTerm] = useState('');
-
   const data = useSelector((state) => state.save);
   const [filteredData, setFilteredData] = useState(data);
 
+  useEffect(() => {
+    const results = data.filter(
+      (val) =>
+        val.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        val.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        val.dateOfBirthForm.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        val.startDateForm.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        val.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        val.states.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        val.street.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        val.zip.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        val.department.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        val.city.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setFilteredData(results);
+  }, [data, searchTerm]);
+
   const handleChange = (e) => {
-    console.log(e);
     setSearchTerm(e.target.value);
-    let temp = data.filter((val) => {
-      if (searchTerm === '') {
-        return val;
-      } else if (
-        val.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
-        return val;
-      } else if (
-        val.lastName.toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
-        return val;
-      } else if (
-        val.dateOfBirthForm.toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
-        return val;
-      } else if (
-        val.startDateForm.toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
-        return val;
-      } else if (
-        val.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
-        return val;
-      } else if (val.states.toLowerCase().includes(searchTerm.toLowerCase())) {
-        return val;
-      } else if (val.street.toLowerCase().includes(searchTerm.toLowerCase())) {
-        return val;
-      } else if (val.zip.toLowerCase().includes(searchTerm.toLowerCase())) {
-        return val;
-      } else if (
-        val.department.toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
-        return val;
-      } else if (val.city.toLowerCase().includes(searchTerm.toLowerCase())) {
-        return val;
-      }
-      // ine 30:34:  Array.prototype.filter() expects a value to be returned at the end of arrow function
-    });
-    console.log(temp);
-    setFilteredData(temp);
   };
+
   return (
     <>
       <title>HRnet - Current Employees</title>
