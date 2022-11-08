@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { options } from '../assets/departments';
 import { states } from '../assets/states';
-import Modal from '../components/Modal';
+import Modal from '../lib/components/Modal';
 import styled from 'styled-components';
 import { saveFormValue } from '../features/saveEmployeeSlice';
 
