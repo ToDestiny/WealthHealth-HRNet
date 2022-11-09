@@ -1,24 +1,6 @@
 {
-  "name": "simple-react-modal-js",
+  "name": "hr-net",
   "version": "0.1.0",
-  "description": "Simple modal using ReactJS",
-  "author": "ToDestiny",
-  "keywords": [
-    "react",
-    "components",
-    "ui"
-  ],
-  "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ToDestiny/simple-react-modal"
-  },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@reduxjs/toolkit": "^1.8.6",
