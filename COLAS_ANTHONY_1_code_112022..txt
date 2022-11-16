@@ -1,0 +1,10 @@
+﻿Lien du projet complet:
+https://github.com/ToDestiny/WealthHealth-HRNet
+
+
+Lien du plugin jQuery
+https://github.com/ToDestiny/simple-react-modal
+
+
+Lien du package NPM
+https://www.npmjs.com/package/simple-react-modal-js
