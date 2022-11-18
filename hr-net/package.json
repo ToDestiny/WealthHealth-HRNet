@@ -1,6 +1,17 @@
 {
-  "name": "hr-net",
-  "version": "0.1.0",
+  "name": "simple-react-modal-js",
+  "version": "0.2.3",
+  "description": "Simple modal for React. Used for a school project",
+  "author": "Anthony Colas",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ToDestiny/simple-react-modal"
+  },
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "modal"
+  ],
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@reduxjs/toolkit": "^1.8.6",
