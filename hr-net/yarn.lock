@@ -2215,10 +2215,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.8 || ^17.0 || ^18.0":
-  "integrity" "sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA=="
-  "resolved" "https://registry.npmjs.org/@types/react/-/react-18.0.21.tgz"
-  "version" "18.0.21"
+"@types/react@*", "@types/react@^16.8 || ^17.0 || ^18.0", "@types/react@^18.0.25":
+  "integrity" "sha512-xD6c0KDT4m7n9uD4ZHi02lzskaiqcBxf4zi+tXZY98a04wvc0hi/TcCPC2FOESZi51Nd7tlUeOJY8RofL799/g=="
+  "resolved" "https://registry.npmjs.org/@types/react/-/react-18.0.25.tgz"
+  "version" "18.0.25"
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -8551,6 +8551,28 @@
     "react-router-dom" "^6.4.2"
     "react-scripts" "5.0.1"
     "react-select" "^5.5.6"
+    "styled-components" "^5.3.6"
+    "web-vitals" "^2.1.4"
+
+"simple-react-modal-js@^0.2.7":
+  "integrity" "sha512-WmEVW5eAr4G6yekph6y/cEFa8RitUY8o7VOZuJsZy0k7Yu3LGBryQZLEfVJZ1o8eIy9oPZYxdTDWDt7VOCBmqg=="
+  "resolved" "https://registry.npmjs.org/simple-react-modal-js/-/simple-react-modal-js-0.2.7.tgz"
+  "version" "0.2.7"
+  dependencies:
+    "@babel/polyfill" "^7.12.1"
+    "@reduxjs/toolkit" "^1.8.6"
+    "@testing-library/jest-dom" "^5.16.5"
+    "@testing-library/react" "^13.4.0"
+    "@testing-library/user-event" "^13.5.0"
+    "react" "^18.2.0"
+    "react-data-table-component" "^7.5.3"
+    "react-date-picker" "^9.0.0"
+    "react-dom" "^18.2.0"
+    "react-redux" "^8.0.4"
+    "react-router-dom" "^6.4.2"
+    "react-scripts" "5.0.1"
+    "react-select" "^5.5.6"
+    "simple-react-modal-js" "^0.1.0"
     "styled-components" "^5.3.6"
     "web-vitals" "^2.1.4"
 
